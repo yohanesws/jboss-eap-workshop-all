@@ -5,6 +5,10 @@ Jadi solusinya adalah:
 1. Buat Vault dan simpan sensitif informasi
 2. Config di masing2 node
 
+   Buat Keystore
+   ```
+     keytool -genseckey -alias vault -keystore vault.keystore -storetype jceks -keyalg AES -keysize 128 -storepass redhat1! -keypass redhat1! -dname "CN=jboss-vault,OU=jboss,O=jboss,L=jakarta,c=ID"
+   ```
 
    Buat Vault dan simpan sensitif informasi
 
@@ -64,7 +68,7 @@ Jadi solusinya adalah:
    Please enter a Digit:: 0: Store a secured attribute 1: Check whether a secured attribute exists 2: Remove secured attribute 3: Exit
    ```
 
-   Config di Host
+   Config di Host atau standalone
 
    ```
 
@@ -75,7 +79,10 @@ Jadi solusinya adalah:
    <vault-option name="ITERATION_COUNT" value="50"/>
    <vault-option name="ENC_FILE_DIR" value="/opt/jboss/eap/vault/"/> </vault>
    ....
+   ```
 
+   Config di profile domain.xml atau standalone
+   ```
     <subsystem xmlns="urn:jboss:domain:datasources:1.2"> <datasources>
     <datasource jndi-name="java:jboss/<jndiname>" enabled="true" use-java-context="true">
     ... <security>
