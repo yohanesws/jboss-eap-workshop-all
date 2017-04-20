@@ -196,7 +196,37 @@ Contoh konfigurasi Domain.xml
                        </security-settings>
                      </hornetq-server>
              </subsystem>
+
+             .....
+
+             <socket-binding-group name="full-ha-sockets" default-interface="public">
+              <!-- Needed for server groups using the 'full-ha' profile  -->
+              <socket-binding name="ajp" port="8009"/>
+              <socket-binding name="http" port="8080"/>
+              <socket-binding name="https" port="8443"/>
+              <socket-binding name="jacorb" interface="unsecure" port="3528"/>
+              <socket-binding name="jacorb-ssl" interface="unsecure" port="3529"/>
+              <socket-binding name="jgroups-mping" port="0" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45700"/>
+              <socket-binding name="jgroups-tcp" port="7600"/>
+              <socket-binding name="jgroups-tcp-fd" port="57600"/>
+              <socket-binding name="jgroups-udp" port="55200" multicast-address="${jboss.default.multicast.address:230.0.0.4}" multicast-port="45688"/>
+              <socket-binding name="jgroups-udp-fd" port="54200"/>
+              <socket-binding name="messaging" port="5445"/>
+              <socket-binding name="messaging-backup" port="5446"/>
+              <socket-binding name="messaging-group" port="0" multicast-address="${jboss.messaging.group.address:231.7.7.7}" multicast-port="${jboss.messaging.group.port:9876}"/>
+              <socket-binding name="messaging-throughput" port="5455"/>
+              <socket-binding name="messaging-throughput-backup" port="5456"/>
+              <socket-binding name="modcluster" port="0" multicast-address="224.0.1.105" multicast-port="23364"/>
+              <socket-binding name="remoting" port="4447"/>
+              <socket-binding name="txn-recovery-environment" port="4712"/>
+              <socket-binding name="txn-status-manager" port="4713"/>
+              <outbound-socket-binding name="mail-smtp">
+                  <remote-destination host="localhost" port="25"/>
+              </outbound-socket-binding>
+            </socket-binding-group>
    ```
+
+
 
 Contoh konfigurasi host node 1
 
